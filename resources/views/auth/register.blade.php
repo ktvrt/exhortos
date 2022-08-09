@@ -40,6 +40,23 @@
                 </div>
               @endif
             </div>
+            <!-- UserName -->
+            <div class="bmd-form-group{{ $errors->has('username') ? ' has-danger' : '' }} mt-3">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                      <i class="material-icons">fingerprint</i>
+                  </span>
+                </div>
+                <input type="text" name="username" class="form-control" placeholder="{{ __('UserName...') }}"
+                value="{{ old('username') }}" required autofocus>
+              </div>
+              @if ($errors->has('username'))
+                <div id="username-error" class="error text-danger pl-3" for="username" style="display: block;">
+                  <strong>{{ $errors->first('username') }}</strong>
+                </div>
+              @endif
+            </div>
             <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }} mt-3">
               <div class="input-group">
                 <div class="input-group-prepend">
