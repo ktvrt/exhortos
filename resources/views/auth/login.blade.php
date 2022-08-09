@@ -29,7 +29,7 @@
             <p class="card-description text-center">
                 {{ __('Ingresa tus credenciales') }}
             </p>
-            <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
+            {{--<div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text">
@@ -44,7 +44,23 @@
                   <strong>{{ $errors->first('email') }}</strong>
                 </div>
               @endif
+          </div>--}}
+          <div class="bmd-form-group{{ $errors->has('username') ? ' has-danger' : '' }}">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="material-icons">face</i>
+                </span>
+              </div>
+              <input type="text" name="username" class="form-control" placeholder="{{ __('username...') }}"
+                  value="{{ old('username') }}" required autofocus>
             </div>
+            @if ($errors->has('username'))
+              <div id="username-error" class="error text-danger pl-3" for="username" style="display: block;">
+                <strong>{{ $errors->first('username') }}</strong>
+              </div>
+            @endif
+          </div>
             <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
               <div class="input-group">
                 <div class="input-group-prepend">

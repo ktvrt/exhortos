@@ -46,7 +46,7 @@ return [
     |
     */
 
-    'username' => 'email',
+    'username' => 'username',
 
     'email' => 'email',
 
@@ -102,9 +102,12 @@ return [
     |
     */
 
-    'limiters' => [
+    /*'limiters' => [
         'login' => 'login',
         'two-factor' => 'two-factor',
+    ],*/
+    'limiters' => [
+        'login' => null,
     ],
 
     /*
