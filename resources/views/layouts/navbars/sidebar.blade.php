@@ -41,10 +41,16 @@
           </ul>
         </div>
       </li>
-      <li class="nav-item{{ $activePage == 'user' ? ' active' : '' }}">
-        <a class="nav-link" href="#">
+      <li class="nav-item{{ $activePage == 'user-index' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('user.index') }}">
           <i class="material-icons">content_paste</i>
-            <p>{{ __('Table List') }}</p>
+            <p>{{ __('Lista de usuarios') }}</p>
+        </a>
+      </li>
+      <li class="nav-item{{ $activePage == 'user-create' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('user.create') }}">
+          <i class="material-icons">content_paste</i>
+            <p>{{ __('Nuevo Usuario') }}</p>
         </a>
       </li>
       <li class="nav-item{{ $activePage == 'typography' ? ' active' : '' }}">

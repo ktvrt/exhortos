@@ -8,6 +8,26 @@ use App\Models\User;
 class UserController extends Controller
 {
     /**
+    * visualizar Usuarios
+    * @return \Illuminate\View\View Lista de usuarios
+    */
+    public function index(){
+        //$usuarios = User::all();
+        $usuarios = User::paginate(1);
+
+        //lanzamos la vista view/user/index.blade.php
+        //y le pasamos parametros que ocupa
+        //como es ['<nombre-variable>' => <valores>]
+        /* Lo mismo
+        return view('user.index',[
+                'usuarios' => $usuarios,
+                'titulo' => $titulo
+          ]);
+          */
+          return view('user.index',compact('usuarios'));
+    }
+
+    /**
      * Crea un usuario nuevo
      * @return una vista de creacion de usuarios
      */
@@ -41,7 +61,7 @@ class UserController extends Controller
        //$profesion = Profesion::find($data['profesion_id']);
        //$usuario->profesion()->associate($profesion);
        $usuario->save();
-       
-       return redirect()->route('home');
+
+       return redirect()->route('user.index');
    }
 }
