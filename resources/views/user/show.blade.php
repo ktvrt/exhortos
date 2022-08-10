@@ -17,7 +17,7 @@
                           {{ session('success') }}
                       </div>
                   @endif
-                  
+
                   {{-- CARD USER --}}
                   <div class="card card-user">
                       <div class="card-body">
@@ -41,14 +41,9 @@
                       </div>
                       <div class="card-footer">
                           <div class="button-container">
-                              <button class="btn btn-sm btn-primary">
+                              <a href="{{ route('user.index') }}" class="btn btn-primary"> Salir</a>
+                              <button class="btn btn-warning">
                                   Editar
-                              </button>
-                              <button class="btn btn-icon btn-round btn-twitter">
-                                  <i class="fab fa-twitter"></i>
-                              </button>
-                              <button class="btn btn-icon btn-round btn-google">
-                                  <i class="fab fa-google-plus"></i>
                               </button>
                           </div>
                       </div>
@@ -56,11 +51,6 @@
                   {{-- FIN CARD USER --}}
 
               </div>
-              <!-- pie del formulario-->
-              <div class="card-footer ml-auto mr-auto">
-                <a href="{{ route('user.index') }}" class="btn btn-primary"> Salir</a>
-              </div>
-              <!-- Fin pie del formulario-->
             </div>
 
         </div>

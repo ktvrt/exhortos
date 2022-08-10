@@ -42,8 +42,8 @@ class UserController extends Controller
        $data = request()->validate([
            'name' => 'required',
            'email' => ['required','email','unique:users,email'],
-           'password' => ['required','min:6'],
-           'username' => ['required','unique:users,username'],
+           'password' => ['required','min:6','max:255'],
+           'username' => ['required','min:5','max:255','unique:users,username'],
        ], [
            'name.required' => 'El campo name es obligatorio',
            'email.required' => 'El campo email es obligatorio',
