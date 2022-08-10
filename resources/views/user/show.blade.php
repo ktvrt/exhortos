@@ -5,6 +5,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
+            
             <div class="card ">
               <div class="card-header card-header-primary">
                 <h4 class="card-title">{{ __('Usuario') }}</h4>
@@ -51,13 +52,9 @@
                           {{-- FIN CARD USER --}}
                       </div>
                   </div>
-
-
-
-
               </div>
               <!-- pie del formulario-->
-              <div class="card-footer ml-auto mr-auto">                
+              <div class="card-footer ml-auto mr-auto">
                 <a href="{{ route('user.index') }}" class="btn btn-primary"> Salir</a>
               </div>
               <!-- Fin pie del formulario-->

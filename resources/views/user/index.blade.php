@@ -16,8 +16,7 @@
                         <div class="alert alert-success" role="success">
                             {{ session('success') }}
                         </div>
-
-                    @endif
+                    @endif                    
                     <div class="row">
                         <div class="col-12 text-right">
                           <a href="{{ route('user.create')}}" class="btn btn-sm btn-success">Agregar Usuario</a>
@@ -56,7 +55,7 @@
                                                 <div class="ripple-container"></div>
                                             </a>
                                             <a rel="tooltip" class="btn btn-warning "
-                                                href="#" data-original-title="" title="">
+                                                href="{{ route('user.edit', $usr) }}" data-original-title="" title="">
                                                 <i class="material-icons"> edit </i>
                                                 <div class="ripple-container"></div>
                                             </a>

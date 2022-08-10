@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use App\Models\User;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -41,7 +43,7 @@ class UserController extends Controller
            'name' => 'required',
            'email' => ['required','email','unique:users,email'],
            'password' => ['required','min:6'],
-           'username' => 'required',
+           'username' => ['required','unique:users,username'],
        ], [
            'name.required' => 'El campo name es obligatorio',
            'email.required' => 'El campo email es obligatorio',
@@ -49,7 +51,8 @@ class UserController extends Controller
            'email.unique' => 'El email ya se encuentra registrado',
            'password.required' => 'El campo password es obligatorio',
            'password.min' => 'El campo :attribute minmo debe tener :min caracteres',
-           'username.required' => 'El campo username es obligatorio'
+           'username.required' => 'El campo username es obligatorio',
+           'username.unique' => 'El username ya se encuentra en uso por otro usuario'
        ]);
 
        $usuario = new User([
@@ -62,7 +65,8 @@ class UserController extends Controller
        //$usuario->profesion()->associate($profesion);
        $usuario->save();
 
-       return redirect()->route('user.index')->with('success', 'Usuario creado correctamente');
+       return redirect()->route('user.index')
+            ->with('success', 'Usuario creado correctamente');
    }
 
    /**
@@ -74,5 +78,62 @@ class UserController extends Controller
     public function show(User $usuario){
         //dd($usuario); //vemosel usuario objeto
       return view('user.show', compact('usuario'));
+    }
+    /**
+     * Lanza vista para editar usuario
+     * @param  User   $usuario               Modelo
+     * @return View          user.edit
+     */
+    public function edit(User $usuario){
+
+        return view('user.edit', compact('usuario'));
+
+    }
+
+    /**
+     * Actualiza los datos del usuario en la BD
+     * @param  User   $usuario               Modelo
+     * @return view          redirecciona a la vista user.show
+     */
+    public function update(User $usuario)
+    {
+        $data = request()->validate([
+            'name' => 'required',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users', 'email')
+                    ->ignore($usuario->id)
+            ],
+            'password' => '',
+            //'username' => 'required',
+            'username' => [
+                'required',
+                Rule::unique('users', 'username')
+                    ->ignore($usuario->id)
+            ],
+        ], [
+            'name.required' => 'El campo name es obligatorio',
+            'email.required' => 'El campo email es obligatorio',
+            'email.email' => 'El campo email no tiene formato valido',
+            'email.unique' => 'El email ya se encuentra registrado',
+            'password.min' => 'El campo :attribute minmo debe tener :min caracteres',
+            'username.required' => 'El campo username es obligatorio',
+            'username.unique' => 'El username ya esta en uso por otro usuario',
+        ]);
+        //dd($data);
+        if ( is_null($data['password']) ) {
+            unset($data['password']);
+        } else {
+            $data['password'] = bcrypt($data['password']);
+        }
+
+        //$profesion = Profesion::find($data['profesion_id']);
+        //$usuario->profesion()->associate($profesion);
+
+        $usuario->update($data);
+
+        return redirect()->route('user.index')
+                    ->with('success', 'Usuario actualizado correctamente');
     }
 }

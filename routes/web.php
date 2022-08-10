@@ -34,6 +34,13 @@ Route::get('usuario/nuevo', [UserController::class, 'create'])
 Route::post('usuario/almacenar', [UserController::class, 'store'])
     ->name('user.store');
 
-Route::get('usuario/detalles/{usuario}',[UserController::class, 'show'])
+Route::get('usuario/{usuario}/detalles',[UserController::class, 'show'])
     ->where('usuario','[0-9]+')//le indicamos a este enrutador que se ejecute si son numeros los parametros
     ->name('user.show');
+
+Route::get('usuario/{usuario}/editar', [UserController::class, 'edit'])
+    ->name('user.edit');
+
+//Metodo Put sirven para actualizar información
+Route::put('usuario/{usuario}/actualizar', [UserController::class, 'update'])
+    ->name('user.update');
