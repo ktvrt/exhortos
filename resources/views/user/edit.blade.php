@@ -7,9 +7,9 @@
         <div class="col-md-4">
 
           <form class="form" method="POST" action="{{ route('user.update', $usuario) }}">
-              @csrf
-              {{-- method_field('PUT') --}}
-              @method('PUT')
+            @csrf
+            {{-- method_field('PUT') --}}
+            @method('PUT')
             <div class="card card-hidden mb-3">
               <div class="card-header card-header-primary text-center">
                 <h4 class="card-title"><strong>{{ __('Editar') }}</strong></h4>

@@ -4,47 +4,93 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-4">
           <form method="post" action="{{ route('user.store') }}" autocomplete="off" class="form-horizontal">
             @csrf
 
-            <div class="card ">
-              <div class="card-header card-header-primary">
-                <h4 class="card-title">{{ __('Usuario') }}</h4>
+            <div class="card card-hidden mb-3">
+              <div class="card-header card-header-primary text-center">
+                <h4 class="card-title"><strong>{{ __('Nuevo Usuario') }}</strong></h4>
                 <p class="card-category">{{ __('Ingresar datos') }}</p>
               </div>
               <div class="card-body ">
-                  <div class="row">
-                      <label for="name" class="col-sm-2 col-form-label">Nombre</label>
-                      <div class="col-sm-7">
-                          <input type="text" class="form-control" name="name" placeholder="ingrese el nombre" autofocus>
-                      </div>
+                <!-- Name -->
+                <div class="bmd-form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                          <i class="material-icons">face</i>
+                      </span>
+                    </div>
+                    <input type="text" name="name" class="form-control" placeholder="{{ __('Name...') }}"
+                    value="{{ old('name') }}" required autofocus>
                   </div>
-                  <div class="row">
-                      <label for="username" class="col-sm-2 col-form-label">Nombre de usuario</label>
-                      <div class="col-sm-7">
-                          <input type="text" class="form-control" name="username" placeholder="ingrese el nombre de usuario" autofocus>
-                      </div>
+                  @if ($errors->has('name'))
+                    <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
+                      <strong>{{ $errors->first('name') }}</strong>
+                    </div>
+                  @endif
+                </div>
+                <!-- Fin Name -->
+                <!-- UserName -->
+                <div class="bmd-form-group{{ $errors->has('username') ? ' has-danger' : '' }} mt-3">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                          <i class="material-icons">fingerprint</i>
+                      </span>
+                    </div>
+                    <input type="text" name="username" class="form-control" placeholder="{{ __('UserName...') }}"
+                    value="{{ old('username') }}" required autofocus>
                   </div>
-                  <div class="row">
-                      <label for="email" class="col-sm-2 col-form-label">Email</label>
-                      <div class="col-sm-7">
-                          <input type="email" class="form-control" name="email" placeholder="ingrese su email" autofocus>
-                      </div>
+                  @if ($errors->has('username'))
+                    <div id="username-error" class="error text-danger pl-3" for="username" style="display: block;">
+                      <strong>{{ $errors->first('username') }}</strong>
+                    </div>
+                  @endif
+                </div>
+                <!-- Fin UserName -->
+                <!-- email -->
+                <div class="bmd-form-group{{ $errors->has('email') ? ' has-danger' : '' }} mt-3">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">email</i>
+                      </span>
+                    </div>
+                    <input type="email" name="email" class="form-control" placeholder="{{ __('Email...') }}"
+                        value="{{ old('email') }}" required>
                   </div>
-                  <div class="row">
-                      <label for="password" class="col-sm-2 col-form-label">password</label>
-                      <div class="col-sm-7">
-                          <input type="password" class="form-control" name="password" placeholder="password" autofocus>
-                      </div>
+                  @if ($errors->has('email'))
+                    <div id="email-error" class="error text-danger pl-3" for="email" style="display: block;">
+                      <strong>{{ $errors->first('email') }}</strong>
+                    </div>
+                  @endif
+                </div>
+                <!-- Fin email -->
+                <!-- Password -->
+                <div class="bmd-form-group{{ $errors->has('password') ? ' has-danger' : '' }} mt-3">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">lock_outline</i>
+                      </span>
+                    </div>
+                    <input type="password" name="password" id="password" class="form-control"
+                        placeholder="{{ __('Ingrese la contraseña...') }}">
                   </div>
+                  @if ($errors->has('password'))
+                    <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
+                      <strong>{{ $errors->first('password') }}</strong>
+                    </div>
+                  @endif
+                </div>
+                <!-- Fin Password -->
               </div>
-              <!-- pie del formulario-->
-              <div class="card-footer ml-auto mr-auto">
+              <div class="card-footer justify-content-center">
                   <a href="{{ route('user.index') }}" class="btn btn-danger"> Salir</a>
-                  <button type="submit" class="btn btn-success">{{ __('Guardar') }}</button>
+                  <button type="submit" class="btn btn-primary ">{{ __('Guardar') }}</button>
               </div>
-              <!-- Fin pie del formulario-->
             </div>
           </form>
         </div>
