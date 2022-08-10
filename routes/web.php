@@ -25,3 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Metodo Get sirven para traer información
 Route::get('usuario/nuevo', [UserController::class, 'create'])
     ->name('user.create');
+
+//Metodo Post sirven para enviar información
+Route::post('usuario/almacenar', [UserController::class, 'store'])
+    ->name('user.store');
