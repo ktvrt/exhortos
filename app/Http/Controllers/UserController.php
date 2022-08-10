@@ -136,4 +136,17 @@ class UserController extends Controller
         return redirect()->route('user.show', $usuario)
                     ->with('success', 'Usuario actualizado correctamente');
     }
+
+    /**
+     * Eliminar usuario
+     * @param  User   $usuario               Modelo
+     * @return view          usr.index
+     */
+    public function destroy(User $usuario){
+        //llamamos al metodo delete() para eliminar el usuarios
+        $usuario->delete();
+
+        return redirect()->route('user.index')
+            ->with('success', 'Usuario eliminado correctamente');
+    }
 }

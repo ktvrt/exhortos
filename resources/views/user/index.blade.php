@@ -16,7 +16,7 @@
                         <div class="alert alert-success" role="success">
                             {{ session('success') }}
                         </div>
-                    @endif                    
+                    @endif
                     <div class="row">
                         <div class="col-12 text-right">
                           <a href="{{ route('user.create')}}" class="btn btn-sm btn-success">Agregar Usuario</a>
@@ -49,21 +49,55 @@
                                         <td>{{ $usr->username }}</td>
                                         <td>{{ $usr->created_at }}</td>
                                         <td class="td-actions text-right">
-                                            <a rel="tooltip" class="btn btn-success "
-                                                href="{{ route('user.show', $usr) }}" data-original-title="" title="">
-                                                <i class="material-icons"> person </i>
-                                                <div class="ripple-container"></div>
-                                            </a>
-                                            <a rel="tooltip" class="btn btn-warning "
-                                                href="{{ route('user.edit', $usr) }}" data-original-title="" title="">
-                                                <i class="material-icons"> edit </i>
-                                                <div class="ripple-container"></div>
-                                            </a>
-                                            <a rel="tooltip" class="btn btn-danger "
-                                                href="#" data-original-title="" title="">
-                                                <i class="material-icons"> close </i>
-                                                <div class="ripple-container"></div>
-                                            </a>
+                                            <form action="{{ route('user.destroy', $usr) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a rel="tooltip" class="btn btn-success "
+                                                    href="{{ route('user.show', $usr) }}" data-original-title="" title="">
+                                                    <i class="material-icons"> person </i>
+                                                    <div class="ripple-container"></div>
+                                                </a>
+                                                <a rel="tooltip" class="btn btn-warning "
+                                                    href="{{ route('user.edit', $usr) }}" data-original-title="" title="">
+                                                    <i class="material-icons"> edit </i>
+                                                    <div class="ripple-container"></div>
+                                                </a>
+
+                                                <!-- Button trigger modal -->
+                                                <button type="button" class="btn btn-danger" rel="tooltip"
+                                                    data-toggle="modal" data-target="#modal{{$usr->id}}">
+                                                    <i class="material-icons"> close </i>
+                                                    <div class="ripple-container"></div>
+                                                </button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="modal{{$usr->id}}" tabindex="-1" role="dialog"
+                                                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                  <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                      <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">Eliminar usuario #{{ $usr->id }}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                          <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                      </div>
+                                                      <div class="modal-body">
+                                                          <div class="alert alert-danger" role="alert">
+                                                              ¿Esta seguro que
+                                                              <a href="#" class="alert-link">quiere eliminar</a>.
+                                                              el suario {{ $usr->name }}?
+                                                          </div>
+                                                      </div>
+                                                      <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <!-- FIN Modal -->
+                                            </form>
+
                                         </td>
                                     </tr>
                                 @empty

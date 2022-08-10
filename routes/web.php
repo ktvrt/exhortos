@@ -44,3 +44,7 @@ Route::get('usuario/{usuario}/editar', [UserController::class, 'edit'])
 //Metodo Put sirven para actualizar información
 Route::put('usuario/{usuario}/actualizar', [UserController::class, 'update'])
     ->name('user.update');
+
+//Metodo delete sirven para eliminar información
+Route::delete('usuario/{usuario}/eliminar', [UserController::class, 'destroy'])
+    ->name('user.destroy');
