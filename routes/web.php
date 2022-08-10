@@ -33,3 +33,7 @@ Route::get('usuario/nuevo', [UserController::class, 'create'])
 //Metodo Post sirven para enviar información
 Route::post('usuario/almacenar', [UserController::class, 'store'])
     ->name('user.store');
+
+Route::get('usuario/detalles/{usuario}',[UserController::class, 'show'])
+    ->where('usuario','[0-9]+')//le indicamos a este enrutador que se ejecute si son numeros los parametros
+    ->name('user.show');

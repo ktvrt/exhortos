@@ -12,6 +12,12 @@
                     <p class="card-category"> Administración de Usuarios</p>
                 </div>
                 <div class="card-body">
+                    @if (session('success'))
+                        <div class="alert alert-success" role="success">
+                            {{ session('success') }}
+                        </div>
+
+                    @endif
                     <div class="row">
                         <div class="col-12 text-right">
                           <a href="{{ route('user.create')}}" class="btn btn-sm btn-success">Agregar Usuario</a>
@@ -44,8 +50,19 @@
                                         <td>{{ $usr->username }}</td>
                                         <td>{{ $usr->created_at }}</td>
                                         <td class="td-actions text-right">
-                                            <a rel="tooltip" class="btn btn-success btn-link" href="#" data-original-title="" title="">
+                                            <a rel="tooltip" class="btn btn-success "
+                                                href="{{ route('user.show', $usr) }}" data-original-title="" title="">
+                                                <i class="material-icons"> person </i>
+                                                <div class="ripple-container"></div>
+                                            </a>
+                                            <a rel="tooltip" class="btn btn-warning "
+                                                href="#" data-original-title="" title="">
                                                 <i class="material-icons"> edit </i>
+                                                <div class="ripple-container"></div>
+                                            </a>
+                                            <a rel="tooltip" class="btn btn-danger "
+                                                href="#" data-original-title="" title="">
+                                                <i class="material-icons"> close </i>
                                                 <div class="ripple-container"></div>
                                             </a>
                                         </td>

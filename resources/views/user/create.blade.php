@@ -41,7 +41,8 @@
               </div>
               <!-- pie del formulario-->
               <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary">{{ __('Guardar') }}</button>
+                  <a href="{{ route('user.index') }}" class="btn btn-danger"> Salir</a>
+                  <button type="submit" class="btn btn-success">{{ __('Guardar') }}</button>
               </div>
               <!-- Fin pie del formulario-->
             </div>

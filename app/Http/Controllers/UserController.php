@@ -13,7 +13,7 @@ class UserController extends Controller
     */
     public function index(){
         //$usuarios = User::all();
-        $usuarios = User::paginate(1);
+        $usuarios = User::paginate(3);
 
         //lanzamos la vista view/user/index.blade.php
         //y le pasamos parametros que ocupa
@@ -62,6 +62,17 @@ class UserController extends Controller
        //$usuario->profesion()->associate($profesion);
        $usuario->save();
 
-       return redirect()->route('user.index');
+       return redirect()->route('user.index')->with('success', 'Usuario creado correctamente');
    }
+
+   /**
+     * Show the profile for a given user.
+     *
+     * @param  User  $usuario objeto usuario a mostrar
+     * @return \Illuminate\View\View usr.show
+     */
+    public function show(User $usuario){
+        //dd($usuario); //vemosel usuario objeto
+      return view('user.show', compact('usuario'));
+    }
 }
