@@ -65,7 +65,7 @@ class UserController extends Controller
        //$usuario->profesion()->associate($profesion);
        $usuario->save();
 
-       return redirect()->route('user.index')
+       return redirect()->route('user.show', $usuario)
             ->with('success', 'Usuario creado correctamente');
    }
 
@@ -133,7 +133,7 @@ class UserController extends Controller
 
         $usuario->update($data);
 
-        return redirect()->route('user.index')
+        return redirect()->route('user.show', $usuario)
                     ->with('success', 'Usuario actualizado correctamente');
     }
 }

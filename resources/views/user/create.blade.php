@@ -3,7 +3,7 @@
 @section('content')
   <div class="content">
     <div class="container-fluid">
-      <div class="row">
+      <div class="row justify-content-center">
         <div class="col-md-4">
           <form method="post" action="{{ route('user.store') }}" autocomplete="off" class="form-horizontal">
             @csrf

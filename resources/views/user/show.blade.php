@@ -5,13 +5,18 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-            
+
             <div class="card ">
               <div class="card-header card-header-primary">
                 <h4 class="card-title">{{ __('Usuario') }}</h4>
                 <p class="card-category">Detalles del usuario: {{$usuario->name}}</p>
               </div>
               <div class="card-body ">
+                  @if (session('success'))
+                      <div class="alert alert-success" role="success">
+                          {{ session('success') }}
+                      </div>
+                  @endif  
                   <div class="row">
                       <div class="col-md-4">
                           {{-- CARD USER --}}

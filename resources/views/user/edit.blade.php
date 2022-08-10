@@ -3,7 +3,7 @@
 @section('content')
   <div class="content">
     <div class="container-fluid">
-      <div class="row">
+      <div class="row justify-content-center">
         <div class="col-md-4">
 
           <form class="form" method="POST" action="{{ route('user.update', $usuario) }}">
