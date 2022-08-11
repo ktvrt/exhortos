@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\User;
-use Illuminate\Validation\Rule;
+
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 
 class UserController extends Controller
 {
@@ -106,8 +107,9 @@ class UserController extends Controller
      * @param  User   $usuario               Modelo
      * @return view          redirecciona a la vista user.show
      */
-    public function update(User $usuario)
+    public function update(UserUpdateRequest $request, User $usuario)
     {
+        /*
         $data = request()->validate([
             'name' => 'required',
             'email' => [
@@ -134,6 +136,20 @@ class UserController extends Controller
             'username.unique' => 'El username ya esta en uso por otro usuario',
         ]);
         //dd($data);
+        if ( is_null($data['password']) ) {
+            unset($data['password']);
+        } else {
+            $data['password'] = bcrypt($data['password']);
+        }
+
+        //$profesion = Profesion::find($data['profesion_id']);
+        //$usuario->profesion()->associate($profesion);
+
+        $usuario->update($data);
+        */
+               
+        $data = $request->only('name', 'username', 'email','password');
+
         if ( is_null($data['password']) ) {
             unset($data['password']);
         } else {

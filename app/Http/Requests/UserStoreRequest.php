@@ -32,7 +32,7 @@ class UserStoreRequest extends FormRequest
     }
 
     /**
-     * Get Mensajes de validacion that apply to the request.
+     * Get Mensajes de validacion Personalizados that apply to the request.
      *
      * @return array
      */
@@ -40,7 +40,6 @@ class UserStoreRequest extends FormRequest
     {
         return [
             'name.required' => 'El campo name es obligatorio',
-            'name.min' => 'El campo name minomo Amigo',
             'email.required' => 'El campo email es obligatorio',
             'email.email' => 'El campo email no tiene formato valido',
             'email.unique' => 'El email ya se encuentra registrado',
