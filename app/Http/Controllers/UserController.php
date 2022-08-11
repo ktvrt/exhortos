@@ -12,6 +12,16 @@ use App\Http\Requests\UserUpdateRequest;
 class UserController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
     * visualizar Usuarios
     * @return \Illuminate\View\View Lista de usuarios
     */
@@ -147,7 +157,7 @@ class UserController extends Controller
 
         $usuario->update($data);
         */
-               
+
         $data = $request->only('name', 'username', 'email','password');
 
         if ( is_null($data['password']) ) {
