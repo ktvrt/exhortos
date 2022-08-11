@@ -49,7 +49,9 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <a rel="tooltip" class="btn btn-success "
-                                                    href="{{ route('permission.show', $permiso) }}" data-original-title="" title="">
+                                                    href="{{
+                                                        route('permission.show', $permiso)
+                                                    }}" data-original-title="" title="">
                                                     <i class="material-icons"> person </i>
                                                     <div class="ripple-container"></div>
                                                 </a>
@@ -116,7 +118,7 @@
                 </div>
                 <!-- Fin pie del formulario-->
             </div>{{--Fin del Card--}}
-            
+
 
           </div>
       </div>

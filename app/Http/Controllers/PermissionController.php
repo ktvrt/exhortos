@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use App\Http\Requests\PermissionStoreRequest;
-use App\HtsionStoreRequest;
 
 class PermissionController extends Controller
 {
@@ -40,19 +39,22 @@ class PermissionController extends Controller
     {
         $permiso = Permission::create($request->validated());
 
-        return redirect()->route('permission.show', $permiso)
+        return redirect()->route('permission.index')
              ->with('success', 'Permiso creado correctamente');
     }
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Permission  $permiso objeto usuario a mostrar
+     * @return \Illuminate\View\View permisos.show
      */
     public function show($id)
     {
-        //
+
+        $permiso = Permission::findOrFail($id);
+
+        //dd($permiso);
+        return view('permisos.show', compact('permiso'));
     }
 
     /**

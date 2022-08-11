@@ -47,5 +47,5 @@ Route::group(['middleware' => 'auth'], function(){
         ->name('user.destroy');
 
     //automaticamente Genera las rutas del CRUD, es decil lo mismo de arriba
-    Route::resource('permission', PermissionController::class);    
+    Route::resource('permission', PermissionController::class);
 });
