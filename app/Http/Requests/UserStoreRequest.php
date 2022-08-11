@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Validador del formulario de usuario
+ */
 class UserStoreRequest extends FormRequest
 {
     /**

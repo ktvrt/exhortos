@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
+use App\Http\Requests\PermissionStoreRequest;
+use App\HtsionStoreRequest;
 
 class PermissionController extends Controller
 {
@@ -25,7 +27,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        return view('permisos.create');
     }
 
     /**
@@ -34,9 +36,12 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PermissionStoreRequest $request)
     {
-        //
+        $permiso = Permission::create($request->validated());
+
+        return redirect()->route('permission.show', $permiso)
+             ->with('success', 'Permiso creado correctamente');
     }
 
     /**
