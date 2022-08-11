@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\User;
 use Illuminate\Validation\Rule;
+use App\Http\Requests\UserStoreRequest;
 
 class UserController extends Controller
 {
@@ -37,8 +38,9 @@ class UserController extends Controller
         return view('user.create');
     }
 
-    public function store(){
+    public function store(UserStoreRequest $request){
 
+        /*
        $data = request()->validate([
            'name' => 'required',
            'email' => ['required','email','unique:users,email'],
@@ -61,9 +63,18 @@ class UserController extends Controller
            'username' => $data['username'],
            'password' => bcrypt($data['password'])
        ]);
+
        //$profesion = Profesion::find($data['profesion_id']);
        //$usuario->profesion()->associate($profesion);
        $usuario->save();
+       */
+
+       $usuario = User::create([
+           'name' => $request['name'],
+           'email' => $request['email'],
+           'username' => $request['username'],
+           'password' => bcrypt($request['password'])
+       ]);
 
        return redirect()->route('user.show', $usuario)
             ->with('success', 'Usuario creado correctamente');
@@ -105,10 +116,12 @@ class UserController extends Controller
                 Rule::unique('users', 'email')
                     ->ignore($usuario->id)
             ],
-            'password' => '',
+            'password' => 'sometime',
             //'username' => 'required',
             'username' => [
                 'required',
+                'min:5',
+                'max:255',
                 Rule::unique('users', 'username')
                     ->ignore($usuario->id)
             ],
@@ -117,7 +130,6 @@ class UserController extends Controller
             'email.required' => 'El campo email es obligatorio',
             'email.email' => 'El campo email no tiene formato valido',
             'email.unique' => 'El email ya se encuentra registrado',
-            'password.min' => 'El campo :attribute minmo debe tener :min caracteres',
             'username.required' => 'El campo username es obligatorio',
             'username.unique' => 'El username ya esta en uso por otro usuario',
         ]);
