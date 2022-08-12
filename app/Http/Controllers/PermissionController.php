@@ -45,16 +45,16 @@ class PermissionController extends Controller
 
     /**
      * Display the specified resource.
+     * NOTA: Por convencion se debe de usar como parametro el mismo nombre
+     * pero en minuscula del modelo en las acciones, si no no jala el bidden:
      * @param  Permission  $permiso objeto usuario a mostrar
      * @return \Illuminate\View\View permisos.show
      */
-    public function show($id)
+    public function show(Permission $permission)
     {
-
-        $permiso = Permission::findOrFail($id);
-
-        //dd($permiso);
-        return view('permisos.show', compact('permiso'));
+        //$permiso = Permission::findOrFail($id);
+        //dd($permission);
+        return view('permisos.show', compact('permission'));
     }
 
     /**

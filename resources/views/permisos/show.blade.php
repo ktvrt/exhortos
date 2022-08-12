@@ -9,7 +9,7 @@
             <div class="card ">
               <div class="card-header card-header-primary">
                 <h4 class="card-title">{{ __('Permiso') }}</h4>
-                <p class="card-category">Detalles del Permiso: {{ $permiso->name }}</p>
+                <p class="card-category">Detalles del Permiso: {{ $permission->name }}</p>
               </div>
               <div class="card-body ">
                   @if (session('success'))
@@ -25,14 +25,12 @@
                               <div class="author">
                                   <a href="#">
                                       <img class="avatar" src="{{asset('img/faces/marc.jpg')}}" alt="">
-                                      <h5 class="title">{{ $permiso->name}}</h5>
+                                      <h5 class="title">{{ $permission->name}}</h5>
                                   </a>
                                   <p class="description">
-                                      {{ $permiso->name }} <br>
-                                      {{ $permiso->created_at }} <br>
-                                      {{ $permiso->guard_name }} <br>
-                                      {{ $permiso->created_at }} <br>
-
+                                      {{ $permission->name }} <br>
+                                      {{ $permission->guard_name }} <br>
+                                      {{ $permission->created_at }} <br>
                                   </p>
                               </div>
                           </p>
