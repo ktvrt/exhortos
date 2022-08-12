@@ -78,11 +78,11 @@ class PermissionController extends Controller
      */
     public function update(PermissionUpdateRequest $request, Permission $permission)
     {
-        $data = $request->validated();        
+        $data = $request->validated();
         $permission->update($data);
 
         return redirect()->route('permission.show', $permission)
-            ->with('success', 'Usuario actualizado correctamente');
+            ->with('success', 'Permiso actualizado correctamente');
     }
 
     /**
@@ -91,8 +91,11 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Permission $permission)
     {
-        //
+        $permission->delete();
+
+        return redirect()->route('permission.index')
+            ->with('success', 'Permiso Eliminado corectamente');
     }
 }
