@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use App\Http\Requests\PermissionStoreRequest;
+use App\Http\Requests\PermissionUpdateRequest;
 
 class PermissionController extends Controller
 {
@@ -75,9 +76,13 @@ class PermissionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PermissionUpdateRequest $request, Permission $permission)
     {
-        //
+        $data = $request->validated();        
+        $permission->update($data);
+
+        return redirect()->route('permission.show', $permission)
+            ->with('success', 'Usuario actualizado correctamente');
     }
 
     /**
