@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,4 +50,5 @@ Route::group(['middleware' => 'auth'], function(){
 
     //automaticamente Genera las rutas del CRUD, es decil lo mismo de arriba
     Route::resource('permission', PermissionController::class);
+    Route::resource('role',RoleController::class);
 });

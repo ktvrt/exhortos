@@ -59,6 +59,12 @@
             <p>{{ __('Permisos') }}</p>
         </a>
       </li>
+      <li class="nav-item{{ $activePage == 'roles' ? ' active' : '' }}">
+        <a class="nav-link" href="{{ route('role.index') }}">
+          <i class="material-icons">library_books</i>
+            <p>{{ __('Roles') }}</p>
+        </a>
+      </li>
       <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">bubble_chart</i>
