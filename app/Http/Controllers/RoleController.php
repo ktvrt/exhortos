@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Requests\RoleStoreRequest;
+use App\Http\Requests\RoleUpdateRequest;
 
 class RoleController extends Controller
 {
@@ -60,9 +61,9 @@ class RoleController extends Controller
      * @param  \App\Models\Rol  $rol
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $rol)
+    public function edit(Role $role)
     {
-        //
+        return view('roles.edit', compact('role'));
     }
 
     /**
@@ -72,9 +73,13 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $rol
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rol $rol)
+    public function update(RoleUpdateRequest $request, Role $role)
     {
-        //
+        $data = $request->validated();
+        $role->update($data);
+
+        return redirect()->route('role.show', $role)
+            ->with('success', 'Rol actualizado correctamente');
     }
 
     /**
@@ -83,7 +88,7 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $rol
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $rol)
+    public function destroy(Role $role)
     {
         //
     }
