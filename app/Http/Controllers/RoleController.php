@@ -49,9 +49,9 @@ class RoleController extends Controller
      * @param  \App\Models\Rol  $rol
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $rol)
+    public function show(Role $role)
     {
-        //
+        return view('roles.show', compact('role'));
     }
 
     /**
