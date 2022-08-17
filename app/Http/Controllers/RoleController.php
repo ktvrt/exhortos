@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
+use App\Http\Requests\RoleStoreRequest;
 
 class RoleController extends Controller
 {
@@ -34,9 +35,12 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RoleStoreRequest $request)
     {
-        //
+        $role = Role::create($request->validated());
+
+        return redirect()->route('role.index')
+             ->with('success', 'Rol creado correctamente');
     }
 
     /**
