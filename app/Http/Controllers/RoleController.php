@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Http\Request;
 use App\Http\Requests\RoleStoreRequest;
 use App\Http\Requests\RoleUpdateRequest;
@@ -27,7 +28,9 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('roles.create');
+        $permissions = Permission::all()->pluck('name','id');
+        //dd($permissions);
+        return view('roles.create', compact('permissions'));
     }
 
     /**
@@ -38,7 +41,10 @@ class RoleController extends Controller
      */
     public function store(RoleStoreRequest $request)
     {
-        $role = Role::create($request->validated());
+        $role = Role::create($request->validated());        
+        //con el heper sync sirve para almacenar de muchos a muchos
+        $role->permissions()->sync($request->input('permissions', []));
+        //dd($request->input('permissions', []));
 
         return redirect()->route('role.index')
              ->with('success', 'Rol creado correctamente');

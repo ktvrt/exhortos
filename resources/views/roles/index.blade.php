@@ -28,12 +28,9 @@
                                 <tr>
                                     <th> ID </th>
                                     <th> Nombre </th>
-                                    <th>
-                                        Guard
-                                    </th>
-                                    <th>
-                                        Fecha alta
-                                    </th>
+                                    <th> Guard </th>
+                                    <th> Fecha creación </th>
+                                    <th> Permisos </th>
                                     <th class="text-right"> Acciones </th>
                                 </tr>
                             </thead>
@@ -44,6 +41,14 @@
                                         <td>{{ $role->name }}</td>
                                         <td>{{ $role->guard_name }}</td>
                                         <td>{{ $role->created_at }}</td>
+                                        <td>
+                                            @forelse($role->permissions as $permission)
+                                                <span class="badge badge-info"> {{ $permission->name }}</span>
+                                            @empty
+                                            <span class="badge badge-danger"> Sin permisos asignados</span>
+
+                                            @endforelse
+                                        </td>
                                         <td class="td-actions text-right">
                                             <form action="{{ route('role.destroy', $role) }}" method="post">
                                                 @csrf

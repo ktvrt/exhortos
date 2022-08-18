@@ -15,23 +15,57 @@
               </div>
               <div class="card-body ">
                 <!-- Name -->
-                <div class="bmd-form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">
-                          <i class="material-icons">face</i>
-                      </span>
+                <div class="row">
+                  <div class="bmd-form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="material-icons">face</i>
+                        </span>
+                      </div>
+                      <input type="text" name="name" class="form-control" placeholder="{{ __('Nombre del rol...') }}"
+                      value="{{ old('name') }}" required autofocus>
                     </div>
-                    <input type="text" name="name" class="form-control" placeholder="{{ __('Nombre del rol...') }}"
-                    value="{{ old('name') }}" required autofocus>
+                    @if ($errors->has('name'))
+                      <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
+                        <strong>{{ $errors->first('name') }}</strong>
+                      </div>
+                    @endif
                   </div>
-                  @if ($errors->has('name'))
-                    <div id="name-error" class="error text-danger pl-3" for="name" style="display: block;">
-                      <strong>{{ $errors->first('name') }}</strong>
-                    </div>
-                  @endif
-                </div>
+                </div>                
                 <!-- Fin Name -->
+                <div class="row">
+                  <label for="name" class="col-sm-2 col-form-label">Permisos</label>
+                  <div class="col-sm-7">
+                    <div class="form-group">
+                      <div class="tab-content">
+                        <div class="tab-pane active">
+                          <table class="table">
+                            <tbody>
+                              @foreach($permissions as $id => $permission)
+                              <tr>
+                                <td>
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input type="checkbox" name="permissions[]" value="{{ $id }}" class="form-check-input">
+                                      <span class="form-check-sign">
+                                        <span class="check"></span>
+                                      </span>
+                                    </label>
+                                  </div>
+                                </td>
+                                <td>
+                                  {{ $permission }}
+                                </td>                                
+                              </tr>
+                              @endforeach
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
               </div>
               <div class="card-footer justify-content-center">
