@@ -35,7 +35,11 @@
                               </div>
                           </p>
                           <div class="card-description">
-                              Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                            @forelse ($role->permissions as $permission)
+                                <span class="badge rounded-pill bg-dark text-white"> {{ $permission->name }}</span>                                
+                            @empty
+                                <span class="badge badge-danger bg-danger"> Sin permisos asignados </span>                                
+                            @endforelse
                           </div>
                       </div>
                       <div class="card-footer">

@@ -58,6 +58,7 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
+        $role->load('permissions');
         return view('roles.show', compact('role'));
     }
 
