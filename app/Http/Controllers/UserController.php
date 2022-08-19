@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\User;
-
+use Spatie\Permission\Models\Role;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
 
@@ -36,7 +36,8 @@ class UserController extends Controller
      * @return una vista de creacion de usuarios
      */
     public function create(){
-        return view('user.create');
+        $roles = Role::all()->pluck('name','id');
+        return view('user.create', compact('roles'));
     }
 
     public function store(UserStoreRequest $request){
@@ -76,6 +77,9 @@ class UserController extends Controller
            'username' => $request['username'],
            'password' => bcrypt($request['password'])
        ]);
+
+       $roles = $request->input('roles', []);
+       $usuario->syncRoles($roles);
 
        return redirect()->route('user.show', $usuario)
             ->with('success', 'Usuario creado correctamente');

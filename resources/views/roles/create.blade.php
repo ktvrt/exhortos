@@ -34,6 +34,7 @@
                   </div>
                 </div>                
                 <!-- Fin Name -->
+                <!-- Permisos -->
                 <div class="row">
                   <label for="name" class="col-sm-2 col-form-label">Permisos</label>
                   <div class="col-sm-7">
@@ -66,7 +67,7 @@
                     </div>
                   </div>
                 </div>
-
+                <!-- FIN Permisos -->
               </div>
               <div class="card-footer justify-content-center">
                   <a href="{{ route('role.index') }}" class="btn btn-danger"> Salir</a>
