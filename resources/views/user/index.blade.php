@@ -28,15 +28,9 @@
                                 <tr>
                                     <th> ID </th>
                                     <th> Nombre </th>
-                                    <th>
-                                        Correo
-                                    </th>
-                                    <th>
-                                        Username
-                                    </th>
-                                    <th>
-                                        Fecha alta
-                                    </th>
+                                    <th> Correo </th>
+                                    <th> Username </th>
+                                    <th> Roles </th>
                                     <th class="text-right"> Acciones </th>
                                 </tr>
                             </thead>
@@ -47,7 +41,13 @@
                                         <td>{{ $usr->name }}</td>
                                         <td>{{ $usr->email }}</td>
                                         <td>{{ $usr->username }}</td>
-                                        <td>{{ $usr->created_at }}</td>
+                                        <td>
+                                            @forelse ($usr->roles as $role)
+                                                <span class="badge badge-info"> {{ $role->name }}</span>
+                                            @empty
+                                                <span class="badge badge-danger"> Sin roles asignados</span>                                                
+                                            @endforelse
+                                        </td>
                                         <td class="td-actions text-right">
                                             <form action="{{ route('user.destroy', $usr) }}" method="post">
                                                 @csrf

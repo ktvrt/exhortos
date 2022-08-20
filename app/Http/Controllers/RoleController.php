@@ -42,7 +42,7 @@ class RoleController extends Controller
     public function store(RoleStoreRequest $request)
     {
         $role = Role::create($request->validated());        
-        //con el heper sync sirve para almacenar de muchos a muchos
+        //Guardar Permisos: con el heper sync sirve para almacenar de muchos a muchos        
         $role->permissions()->sync($request->input('permissions', []));
         //dd($request->input('permissions', []));
 
@@ -87,8 +87,8 @@ class RoleController extends Controller
     public function update(RoleUpdateRequest $request, Role $role)
     {
         $data = $request->validated();
-        $role->update($data);
-        $role->permissions()->sync($request->input('permissions',[]));
+        $role->update($data);        
+        $role->permissions()->sync($request->input('permissions',[]));                            
 
         return redirect()->route('role.show', $role)
             ->with('success', 'Rol actualizado correctamente');

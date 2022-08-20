@@ -79,6 +79,8 @@ class UserController extends Controller
        ]);
 
        $roles = $request->input('roles', []);
+       //Guardar los roles asignados: usando la relacion muchos a muchos
+       //$usuario->sync($roles); //Lo mismo pero mejor lo dejamos como vien en la doc de spaty
        $usuario->syncRoles($roles);
 
        return redirect()->route('user.show', $usuario)
