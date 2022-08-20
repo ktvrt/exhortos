@@ -88,6 +88,41 @@
                   @endif
                 </div>
                 <!-- Fin Password -->
+                <!-- Roles -->
+                <div class="row">
+                  <label for="name" class="col-sm-2 col-form-label">Roles</label>
+                  <div class="col-sm-7">
+                    <div class="form-group">
+                      <div class="tab-content">
+                        <div class="tab-pane active">
+                          <table class="table">
+                            <tbody>
+                              @foreach($roles as $id => $rol)
+                              <tr>
+                                <td>
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input type="checkbox" class="form-check-input" name="roles[]" 
+                                      value="{{ $id }}" {{ $usuario->roles->contains($id) ? 'checked' : '' }}>
+                                      <span class="form-check-sign">
+                                        <span class="check"></span>
+                                      </span>
+                                    </label>
+                                  </div>
+                                </td>
+                                <td>
+                                  {{ $rol }}
+                                </td>                                
+                              </tr>
+                              @endforeach
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- FIN Roles -->
               </div>
               <div class="card-footer justify-content-center">
                   <a href="{{ route('user.index') }}" class="btn btn-danger"> Salir</a>

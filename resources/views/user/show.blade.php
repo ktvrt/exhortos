@@ -25,7 +25,7 @@
                               <div class="author">
                                   <a href="#">
                                       <img class="avatar" src="{{asset('img/faces/marc.jpg')}}" alt="">
-                                      <h5 class="title">{{ $usuario->username}}</h5>
+                                      <h5 class="title">{{ $usuario->name}}</h5>
                                   </a>
                                   <p class="description">
                                       {{ $usuario->username }} <br>
@@ -36,7 +36,12 @@
                               </div>
                           </p>
                           <div class="card-description">
-                              Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                            <h5>Roles</h5>
+                            @forelse ($usuario->roles as $role)
+                                <span class="badge rounded-pill bg-dark text-white"> {{ $role->name }}</span>                                
+                            @empty
+                                <span class="badge badge-danger bg-danger"> Sin roles asignados </span>                                
+                            @endforelse                              
                           </div>
                       </div>
                       <div class="card-footer">

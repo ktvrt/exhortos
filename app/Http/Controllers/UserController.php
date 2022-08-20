@@ -94,6 +94,7 @@ class UserController extends Controller
      * @return \Illuminate\View\View usr.show
      */
     public function show(User $usuario){
+        //$usuario->load('roles');
         //dd($usuario); //vemosel usuario objeto
       return view('user.show', compact('usuario'));
     }
@@ -103,8 +104,10 @@ class UserController extends Controller
      * @return View          user.edit
      */
     public function edit(User $usuario){
+        $roles = Role::all()->pluck('name', 'id');
+        //$usuarios->load('roles');
 
-        return view('user.edit', compact('usuario'));
+        return view('user.edit', compact('usuario', 'roles'));
 
     }
 
@@ -166,6 +169,8 @@ class UserController extends Controller
         //$usuario->profesion()->associate($profesion);
 
         $usuario->update($data);
+        $roles = $request->input('roles');
+        $usuario->syncRoles($roles);
 
         return redirect()->route('user.show', $usuario)
                     ->with('success', 'Usuario actualizado correctamente');
@@ -177,6 +182,10 @@ class UserController extends Controller
      * @return view          usr.index
      */
     public function destroy(User $usuario){
+        if (auth()->user()->id == $usuario->id) {
+            return redirect()->route('user.index')
+                ->with('success', 'Usuario no puede ser eliminado; por sesión activa');
+        }
         //llamamos al metodo delete() para eliminar el usuarios
         $usuario->delete();
 

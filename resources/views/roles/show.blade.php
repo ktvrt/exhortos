@@ -35,6 +35,7 @@
                               </div>
                           </p>
                           <div class="card-description">
+                            <h5>Permisos</h5>
                             @forelse ($role->permissions as $permission)
                                 <span class="badge rounded-pill bg-dark text-white"> {{ $permission->name }}</span>                                
                             @empty
