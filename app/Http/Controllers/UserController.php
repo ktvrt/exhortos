@@ -8,6 +8,7 @@ use App\Models\User;
 use Spatie\Permission\Models\Role;
 use App\Http\Requests\UserStoreRequest;
 use App\Http\Requests\UserUpdateRequest;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -16,6 +17,7 @@ class UserController extends Controller
     * @return \Illuminate\View\View Lista de usuarios
     */
     public function index(){
+        abort_if(Gate::denies('user_index'), 403);
         //$usuarios = User::all();
         $usuarios = User::paginate(3);
 
@@ -36,6 +38,7 @@ class UserController extends Controller
      * @return una vista de creacion de usuarios
      */
     public function create(){
+        abort_if(Gate::denies('user_create'), 403);
         $roles = Role::all()->pluck('name','id');
         return view('user.create', compact('roles'));
     }
@@ -94,6 +97,7 @@ class UserController extends Controller
      * @return \Illuminate\View\View usr.show
      */
     public function show(User $usuario){
+        abort_if(Gate::denies('user_show'), 403);
         //$usuario->load('roles');
         //dd($usuario); //vemosel usuario objeto
       return view('user.show', compact('usuario'));
@@ -104,6 +108,7 @@ class UserController extends Controller
      * @return View          user.edit
      */
     public function edit(User $usuario){
+        abort_if(Gate::denies('user_edit'), 403);
         $roles = Role::all()->pluck('name', 'id');
         //$usuarios->load('roles');
 
@@ -182,6 +187,8 @@ class UserController extends Controller
      * @return view          usr.index
      */
     public function destroy(User $usuario){
+        abort_if(Gate::denies('user_destroy'), 403);
+
         if (auth()->user()->id == $usuario->id) {
             return redirect()->route('user.index')
                 ->with('success', 'Usuario no puede ser eliminado; por sesión activa');
