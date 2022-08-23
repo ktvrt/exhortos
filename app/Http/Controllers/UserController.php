@@ -39,6 +39,7 @@ class UserController extends Controller
      */
     public function create(){
         abort_if(Gate::denies('user_create'), 403);
+        
         $roles = Role::all()->pluck('name','id');
         return view('user.create', compact('roles'));
     }
