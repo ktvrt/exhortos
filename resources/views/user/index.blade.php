@@ -19,7 +19,9 @@
                     @endif
                     <div class="row">
                         <div class="col-12 text-right">
-                          <a href="{{ route('user.create')}}" class="btn btn-sm btn-success">Agregar Usuario</a>
+                            @can('user_create')
+                            <a href="{{ route('user.create')}}" class="btn btn-sm btn-success">Agregar Usuario</a>
+                            @endcan
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -52,17 +54,21 @@
                                             <form action="{{ route('user.destroy', $usr) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
+                                                @can('user_show')
                                                 <a rel="tooltip" class="btn btn-success "
                                                     href="{{ route('user.show', $usr) }}" data-original-title="" title="">
                                                     <i class="material-icons"> person </i>
                                                     <div class="ripple-container"></div>
                                                 </a>
+                                                @endcan
+                                                @can('user_edit')
                                                 <a rel="tooltip" class="btn btn-warning "
                                                     href="{{ route('user.edit', $usr) }}" data-original-title="" title="">
                                                     <i class="material-icons"> edit </i>
                                                     <div class="ripple-container"></div>
                                                 </a>
-
+                                                @endcan
+                                                @can('user_destroy')
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-danger" rel="tooltip"
                                                     data-toggle="modal" data-target="#modal{{$usr->id}}">
@@ -96,6 +102,7 @@
                                                   </div>
                                                 </div>
                                                 <!-- FIN Modal -->
+                                                @endcan
                                             </form>
 
                                         </td>

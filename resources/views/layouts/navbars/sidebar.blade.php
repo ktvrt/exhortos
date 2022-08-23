@@ -41,30 +41,38 @@
           </ul>
         </div>
       </li>
+      @can('user_index')
       <li class="nav-item{{ $activePage == 'user-index' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('user.index') }}">
           <i class="material-icons">content_paste</i>
             <p>{{ __('Lista de usuarios') }}</p>
         </a>
       </li>
+      @endcan
+      @can('user_create')
       <li class="nav-item{{ $activePage == 'user-create' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('user.create') }}">
           <i class="material-icons">content_paste</i>
             <p>{{ __('Nuevo Usuario') }}</p>
         </a>
       </li>
+      @endcan
+      @can('permission_index')
       <li class="nav-item{{ $activePage == 'permisos' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('permission.index') }}">
           <i class="material-icons">library_books</i>
             <p>{{ __('Permisos') }}</p>
         </a>
       </li>
+      @endcan
+      @can('role_index')
       <li class="nav-item{{ $activePage == 'roles' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('role.index') }}">
           <i class="material-icons">library_books</i>
             <p>{{ __('Roles') }}</p>
         </a>
       </li>
+      @endcan
       <li class="nav-item{{ $activePage == 'icons' ? ' active' : '' }}">
         <a class="nav-link" href="#">
           <i class="material-icons">bubble_chart</i>

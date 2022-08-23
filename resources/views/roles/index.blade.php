@@ -19,7 +19,9 @@
                     @endif
                     <div class="row">
                         <div class="col-12 text-right">
-                          <a href="{{ route('role.create')}}" class="btn btn-sm btn-success">Agregar Rol</a>
+                            @can('role_create')
+                            <a href="{{ route('role.create')}}" class="btn btn-sm btn-success">Agregar Rol</a>
+                            @endcan
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -53,6 +55,7 @@
                                             <form action="{{ route('role.destroy', $role) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
+                                                @can('role_show')
                                                 <a rel="tooltip" class="btn btn-success "
                                                     href="{{
                                                         route('role.show', $role)
@@ -60,19 +63,21 @@
                                                     <i class="material-icons"> person </i>
                                                     <div class="ripple-container"></div>
                                                 </a>
+                                                @endcan
+                                                @can('role_edit')
                                                 <a rel="tooltip" class="btn btn-warning "
                                                     href="{{ route('role.edit', $role) }}" data-original-title="" title="">
                                                     <i class="material-icons"> edit </i>
                                                     <div class="ripple-container"></div>
                                                 </a>
-
-                                                <!-- Button trigger modal -->
+                                                @endcan
+                                                @can('role_destroy')
+                                                <!-- Button Destroy trigger modal -->                                                
                                                 <button type="button" class="btn btn-danger" rel="tooltip"
                                                     data-toggle="modal" data-target="#modal{{$role->id}}">
                                                     <i class="material-icons"> close </i>
                                                     <div class="ripple-container"></div>
-                                                </button>
-
+                                                </button>                                                
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="modal{{$role->id}}" tabindex="-1" role="dialog"
                                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -99,6 +104,7 @@
                                                   </div>
                                                 </div>
                                                 <!-- FIN Modal -->
+                                                @endcan
                                             </form>
 
                                         </td>

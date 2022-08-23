@@ -19,7 +19,9 @@
                     @endif
                     <div class="row">
                         <div class="col-12 text-right">
-                          <a href="{{ route('permission.create')}}" class="btn btn-sm btn-success">Agregar Permiso</a>
+                            @can('permission_create')
+                            <a href="{{ route('permission.create')}}" class="btn btn-sm btn-success">Agregar Permiso</a>
+                            @endcan
                         </div>
                     </div>
                     <div class="table-responsive">
@@ -48,6 +50,7 @@
                                             <form action="{{ route('permission.destroy', $permiso) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
+                                                @can('permission_show')
                                                 <a rel="tooltip" class="btn btn-success "
                                                     href="{{
                                                         route('permission.show', $permiso)
@@ -55,19 +58,21 @@
                                                     <i class="material-icons"> person </i>
                                                     <div class="ripple-container"></div>
                                                 </a>
+                                                @endcan
+                                                @can('permission_edit')
                                                 <a rel="tooltip" class="btn btn-warning "
                                                     href="{{ route('permission.edit', $permiso) }}" data-original-title="" title="">
                                                     <i class="material-icons"> edit </i>
                                                     <div class="ripple-container"></div>
                                                 </a>
-
-                                                <!-- Button trigger modal -->
+                                                @endcan
+                                                @can('permission_destroy')
+                                                <!-- Button Destroy trigger modal -->
                                                 <button type="button" class="btn btn-danger" rel="tooltip"
                                                     data-toggle="modal" data-target="#modal{{$permiso->id}}">
                                                     <i class="material-icons"> close </i>
                                                     <div class="ripple-container"></div>
-                                                </button>
-
+                                                </button>                                                
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="modal{{$permiso->id}}" tabindex="-1" role="dialog"
                                                     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -94,6 +99,7 @@
                                                   </div>
                                                 </div>
                                                 <!-- FIN Modal -->
+                                                @endcan
                                             </form>
 
                                         </td>
