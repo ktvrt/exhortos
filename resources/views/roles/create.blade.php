@@ -33,10 +33,13 @@
                     @endif
                   </div>
                 </div>                
-                <!-- Fin Name -->
-                <!-- Permisos -->
+                <!-- Fin Name -->              
                 <div class="row">
-                  <label for="name" class="col-sm-2 col-form-label">Permisos</label>
+                  <h4>Permisos</h4>
+                </div>
+
+                <!-- Permisos -->
+                <div class="row">                  
                   <div class="col-sm-7">
                     <div class="form-group">
                       <div class="tab-content">
@@ -80,3 +83,13 @@
     </div>
   </div>
 @endsection
+
+@push('js')
+
+<script>
+
+</script>
+@endpush
+
+
+

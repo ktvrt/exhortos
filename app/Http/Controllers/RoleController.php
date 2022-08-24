@@ -31,6 +31,7 @@ class RoleController extends Controller
     public function create()
     {
         abort_if(Gate::denies('role_create'), 403);
+        
         $permissions = Permission::all()->pluck('name','id');
         //dd($permissions);
         return view('roles.create', compact('permissions'));
