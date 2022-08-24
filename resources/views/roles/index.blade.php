@@ -43,7 +43,7 @@
                                         <td>{{ $role->name }}</td>
                                         <td>{{ $role->guard_name }}</td>
                                         <td>{{ $role->created_at }}</td>
-                                        <td>
+                                        <td class="col-7">
                                             @forelse($role->permissions as $permission)
                                                 <span class="badge badge-info"> {{ $permission->name }}</span>
                                             @empty
@@ -51,7 +51,7 @@
 
                                             @endforelse
                                         </td>
-                                        <td class="td-actions text-right">
+                                        <td class="td-actions text-right col-1">
                                             <form action="{{ route('role.destroy', $role) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
