@@ -11,7 +11,7 @@
             {{-- method_field('PUT') --}}
             @method('PUT')
             <div class="card card-hidden mb-3">
-              <div class="card-header card-header-primary text-center">
+              <div class="card-header card-header-primary  text-center">
                 <h4 class="card-title"><strong>{{ __('Editar') }}</strong></h4>
                 <p class="card-category">{{ __('Actualizar datos') }}</p>
               </div>
@@ -88,41 +88,46 @@
                   @endif
                 </div>
                 <!-- Fin Password -->
-                <!-- Roles -->
-                <div class="row">
-                  <label for="name" class="col-sm-2 col-form-label">Roles</label>
-                  <div class="col-sm-7">
-                    <div class="form-group">
-                      <div class="tab-content">
-                        <div class="tab-pane active">
-                          <table class="table">
-                            <tbody>
-                              @foreach($roles as $id => $rol)
-                              <tr>
-                                <td>
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      <input type="checkbox" class="form-check-input" name="roles[]" 
-                                      value="{{ $id }}" {{ $usuario->roles->contains($id) ? 'checked' : '' }}>
-                                      <span class="form-check-sign">
-                                        <span class="check"></span>
-                                      </span>
-                                    </label>
-                                  </div>
-                                </td>
-                                <td>
-                                  {{ $rol }}
-                                </td>                                
-                              </tr>
-                              @endforeach
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
+                <!-- rOLES -->
+                <div class="bmd-form-group{{ $errors->has('roles') ? ' has-danger' : '' }} mt-3">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">fact_check</i>
+                      </span>
+                    </div>
+                    <div class="col-md-7">                    
+                      <table class="table">
+                        <tbody>
+                          @foreach($roles as $id => $rol)
+                          <tr>
+                            <td>
+                              <div class="form-check">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input" name="roles[]" 
+                                  value="{{ $id }}" {{ $usuario->roles->contains($id) ? 'checked' : '' }}>
+                                  <span class="form-check-sign">
+                                    <span class="check"></span>
+                                  </span>
+                                </label>
+                              </div>
+                            </td>
+                            <td>
+                              {{ $rol }}
+                            </td>                                
+                          </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
                     </div>
                   </div>
+                  @if ($errors->has('roles'))
+                    <div id="roles-error" class="error text-danger pl-3" for="roles" style="display: block;">
+                      <strong>{{ $errors->first('roles') }}</strong>
+                    </div>
+                  @endif
                 </div>
-                <!-- FIN Roles -->
+                <!-- Fin rOLES -->
               </div>
               <div class="card-footer justify-content-center">
                   <a href="{{ route('user.index') }}" class="btn btn-danger"> Salir</a>

@@ -36,8 +36,7 @@
                 <!-- Fin Name -->              
                 <div class="row">
                   <h4>Permisos</h4>
-                </div>
-                
+                </div>                
                 <!-- Permisos Select2 -->
                 <div class="row ">                  
                 <div class="form-group col-sm-12">                       

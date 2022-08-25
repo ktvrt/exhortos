@@ -7,7 +7,7 @@
         <div class="col-md-4">
 
             <div class="card ">
-              <div class="card-header card-header-primary">
+              <div class="card-header card-header-primary ">
                 <h4 class="card-title">{{ __('Usuario') }}</h4>
                 <p class="card-category">Detalles del usuario: {{$usuario->name}}</p>
               </div>
@@ -46,7 +46,7 @@
                       </div>
                       <div class="card-footer">
                           <div class="button-container">
-                              <a href="{{ route('user.index') }}" class="btn btn-primary"> Salir</a>
+                              <a href="{{ route('user.index') }}" class="btn btn-danger"> Salir</a>
                               <button class="btn btn-warning">
                                   Editar
                               </button>

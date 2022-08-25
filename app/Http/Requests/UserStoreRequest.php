@@ -31,6 +31,7 @@ class UserStoreRequest extends FormRequest
             'username' => ['required','min:5','max:255','unique:users,username'],
             'email' => ['required','email','unique:users,email'],
             'password' => ['required','min:6','max:255'],
+            'roles' => ['array','size:1']   //debe seleccionar solo una opcion
         ];
     }
 
@@ -39,6 +40,7 @@ class UserStoreRequest extends FormRequest
      *
      * @return array
      */
+    /*
     public function messages()
     {
         return [
@@ -46,10 +48,12 @@ class UserStoreRequest extends FormRequest
             'email.required' => 'El campo email es obligatorio',
             'email.email' => 'El campo email no tiene formato valido',
             'email.unique' => 'El email ya se encuentra registrado',
-            'password.required' => 'El campo password es obligatorio',
+            'password.required' => 'El campo password es obligatorio dasdasd',
             'password.min' => 'El campo :attribute minmo debe tener :min caracteres',
             'username.required' => 'El campo username es obligatorio',
-            'username.unique' => 'El username ya se encuentra en uso por otro usuario'
+            'username.unique' => 'El username ya se encuentra en uso por otro usuario',
+            'roles.size' => 'nomas un rol'
         ];
     }
+    */
 }

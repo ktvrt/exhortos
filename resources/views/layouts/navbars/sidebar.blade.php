@@ -1,4 +1,4 @@
-<div class="sidebar" data-color="orange" data-background-color="white" data-image="{{ asset('/') }}img/sidebar-1.jpg">
+<div class="sidebar" data-color="green" data-background-color="black" data-image="{{ asset('/') }}img/sidebar-1.jpg">
   <!--
       Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -50,15 +50,7 @@
             <p>{{ __('Lista de usuarios') }}</p>
         </a>
       </li>
-      @endcan
-      @can('user_create')
-      <li class="nav-item{{ $activePage == 'user-create' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('user.create') }}">
-          <i class="material-icons">content_paste</i>
-            <p>{{ __('Nuevo Usuario') }}</p>
-        </a>
-      </li>
-      @endcan
+      @endcan      
       @can('permission_index')
       <li class="nav-item{{ $activePage == 'permisos' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('permission.index') }}">

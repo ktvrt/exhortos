@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table table-striped table-hover">
                             <thead class=" text-primary">
                                 <tr>
                                     <th> ID </th>
@@ -126,13 +126,7 @@
                     {{ $usuarios->links() }}
                 </div>
                 <!-- Fin pie del formulario-->
-            </div>{{--Fin del Card--}}
-            <div class="alert alert-danger">
-                <span style="font-size:18px;">
-                    <b> </b> Add, Edit, Delete features are not functional. This is a PRO feature! Click
-                    <a target="_blank" style="color:blue" href="https://www.creative-tim.com/live/material-dashboard-pro-laravel">here</a> to see the PRO product.
-                </span>
-            </div>
+            </div>{{--Fin del Card--}}           
 
           </div>
       </div>

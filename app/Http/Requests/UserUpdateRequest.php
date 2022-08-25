@@ -43,6 +43,7 @@ class UserUpdateRequest extends FormRequest
                 Rule::unique('users', 'username')
                     ->ignore($usuario->id)
             ],
+            'roles' => ['array','size:1']   //debe seleccionar solo una opcion
         ];
     }
 
@@ -51,6 +52,7 @@ class UserUpdateRequest extends FormRequest
      *
      * @return array
      */
+    /*
     public function messages()
     {
         return [
@@ -61,5 +63,5 @@ class UserUpdateRequest extends FormRequest
             'username.required' => 'El campo username es obligatorio',            
             'username.unique' => 'El username ya esta en uso por otro usuario',
         ];
-    }
+    }*/
 }

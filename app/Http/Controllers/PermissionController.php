@@ -19,7 +19,7 @@ class PermissionController extends Controller
     {
         abort_if(Gate::denies('permission_index'), 403);
 
-        $permisos = Permission::paginate(5);
+        $permisos = Permission::paginate(10);
         return view('permisos.index', compact('permisos'));
     }
 

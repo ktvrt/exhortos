@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index(){
         abort_if(Gate::denies('user_index'), 403);
         //$usuarios = User::all();
-        $usuarios = User::paginate(3);
+        $usuarios = User::paginate(10);
 
         //lanzamos la vista view/user/index.blade.php
         //y le pasamos parametros que ocupa

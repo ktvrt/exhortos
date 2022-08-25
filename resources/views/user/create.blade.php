@@ -1,8 +1,7 @@
 @extends('layouts.main', ['activePage' => 'user-create', 'titlePage' => __('Crear Usuario')])
 
 @section('content')
-  <div class="content">
-    <div class="container-fluid">
+  <div class="content container-fluid">    
       <div class="row justify-content-center">
         <div class="col-md-4">
           <form method="post" action="{{ route('user.store') }}" autocomplete="off" class="form-horizontal">
@@ -77,7 +76,7 @@
                       </span>
                     </div>
                     <input type="password" name="password" id="password" class="form-control"
-                        placeholder="{{ __('Ingrese la contraseña...') }}">
+                        placeholder="{{ __('Ingrese la contraseña...') }}"" required>
                   </div>
                   @if ($errors->has('password'))
                     <div id="password-error" class="error text-danger pl-3" for="password" style="display: block;">
@@ -86,40 +85,47 @@
                   @endif
                 </div>
                 <!-- Fin Password -->
-                <!-- Roles -->
-                <div class="row">
-                  <label for="name" class="col-sm-2 col-form-label"> Roles </label>
-                  <div class="col-sm-7">
-                    <div class="form-group">
-                      <div class="tab-content">
-                        <div class="tab-pane active">
-                          <table class="table">
-                            <tbody>
-                              @foreach($roles as $id => $role)
-                              <tr>
-                                <td>
-                                  <div class="form-check">
-                                    <label class="form-check-label">
-                                      <input type="checkbox" name="roles[]" value="{{ $id }}" class="form-check-input">
-                                      <span class="form-check-sign">
-                                        <span class="check"></span>
-                                      </span>
-                                    </label>
-                                  </div>
-                                </td>
-                                <td>
-                                  {{ $role }}
-                                </td>                                
-                              </tr>
-                              @endforeach
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
+
+                <!-- rOLES -->                
+                <div class="bmd-form-group{{ $errors->has('roles') ? ' has-danger' : '' }} mt-3">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="material-icons">fact_check</i>
+                      </span>
+                    </div>
+                    <div class="col-md-7">                    
+                      <table class="table">
+                        <tbody>
+                          @foreach($roles as $id => $role)
+                          <tr>
+                            <td>
+                              <div class="form-check">
+                                <label class="form-check-label">
+                                  <input type="checkbox" name="roles[]" value="{{ $id }}" class="form-check-input">
+                                  <span class="form-check-sign">
+                                    <span class="check"></span>
+                                  </span>
+                                </label>
+                              </div>
+                            </td>
+                            <td>
+                              {{ $role }}
+                            </td>                                
+                          </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
                     </div>
                   </div>
+                  @if ($errors->has('roles'))
+                    <div id="roles-error" class="error text-danger pl-3" for="roles" style="display: block;">
+                      <strong>{{ $errors->first('roles') }}</strong>
+                    </div>
+                  @endif
                 </div>
-                <!-- FIN Roles -->
+                <!-- Fin rOLES -->
+
               </div>
               <div class="card-footer justify-content-center">
                   <a href="{{ route('user.index') }}" class="btn btn-danger"> Salir</a>
@@ -128,7 +134,6 @@
             </div>
           </form>
         </div>
-      </div>
-    </div>
+      </div>    
   </div>
 @endsection

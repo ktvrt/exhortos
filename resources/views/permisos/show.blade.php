@@ -40,7 +40,7 @@
                       </div>
                       <div class="card-footer">
                           <div class="button-container">
-                              <a href="{{ route('permission.index') }}" class="btn btn-primary"> Salir</a>
+                              <a href="{{ route('permission.index') }}" class="btn btn-danger"> Salir</a>
                               <button class="btn btn-warning">
                                   Editar
                               </button>
