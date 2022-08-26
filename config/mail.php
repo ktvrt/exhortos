@@ -7,6 +7,13 @@ return [
     | Default Mailer
     |--------------------------------------------------------------------------
     |
+    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
+    apy key
+
+    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
+    smtp key
+
+
     | This option controls the default mailer that is used to send any email
     | messages sent by your application. Alternative mailers may be setup
     | and used as needed; however, this mailer will be used by default.

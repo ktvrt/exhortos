@@ -38,12 +38,9 @@
                               Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
                           </div>
                       </div>
-                      <div class="card-footer">
+                      <div class="card-footer justify-content-center">
                           <div class="button-container">
-                              <a href="{{ route('permission.index') }}" class="btn btn-danger"> Salir</a>
-                              <button class="btn btn-warning">
-                                  Editar
-                              </button>
+                              <a href="{{ route('permission.index') }}" class="btn btn-danger"> Salir</a>                              
                           </div>
                       </div>
                   </div>

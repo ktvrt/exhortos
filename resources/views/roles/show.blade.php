@@ -43,12 +43,9 @@
                             @endforelse
                           </div>
                       </div>
-                      <div class="card-footer">
+                      <div class="card-footer justify-content-center">
                           <div class="button-container">
-                              <a href="{{ route('role.index') }}" class="btn btn-danger"> Salir</a>
-                              <button class="btn btn-warning">
-                                  Editar
-                              </button>
+                              <a href="{{ route('role.index') }}" class="btn btn-danger"> Salir</a>                              
                           </div>
                       </div>
                   </div>

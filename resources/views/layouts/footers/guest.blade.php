@@ -3,34 +3,16 @@
         <nav class="float-left">
         <ul>
             <li>
-            <a href="https://www.creative-tim.com">
-                {{ __('Guest') }}
-            </a>
-            </li>
-            <li>
-            <a href="https://creative-tim.com/presentation">
-                {{ __('About Us') }}
-            </a>
-            </li>
-            <li>
-            <a href="http://blog.creative-tim.com">
-                {{ __('Blog') }}
-            </a>
-            </li>
-            <li>
-            <a href="https://www.creative-tim.com/license">
-                {{ __('Licenses') }}
+            <a href="#">
+              Licencia
             </a>
             </li>
         </ul>
         </nav>
         <div class="copyright float-right">
-        &copy;
-        <script>
-            document.write(new Date().getFullYear())
-        </script>, made with <i class="material-icons">favorite</i> by
-        <a href="https://www.creative-tim.com/product/material-dashboard-laravel" target="_blank">Creative Tim</a> and
-        <a href="https://www.updivision.com" target="_blank">Guest</a> for a better web.
+            &copy;      
+            2022, hecho por el <a href="http://tsj-guerrero.gob.mx" target="_blank">
+            Poder Judicial del Estado de Guerrero.  </a>
         </div>
     </div>
 </footer>
