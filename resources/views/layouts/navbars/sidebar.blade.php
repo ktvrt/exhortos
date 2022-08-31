@@ -5,8 +5,8 @@
       Tip 2: you can also add an image using data-image tag
   -->
   <div class="logo">
-    <a href="https://creative-tim.com/" class="simple-text logo-normal">
-      {{ __('Creative Tim') }}
+    <a href="#" class="simple-text logo-normal">
+      Booking
     </a>
   </div>
   <div class="sidebar-wrapper">
@@ -15,31 +15,33 @@
       <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('home') }}">
           <i class="material-icons">dashboard</i>
-            <p>{{ __('Dashboard') }}</p>
+            <p>Inicio</p>
         </a>
       </li>
       @endcan
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
-        <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
+        <a class="nav-link" data-toggle="collapse" href="#" aria-expanded="true">
           <i><img style="width:25px" src="{{ asset('/') }}img/laravel.svg"></i>
-          <p>{{ __('Laravel Examples') }}
+          <p>Administración
             <b class="caret"></b>
           </p>
         </a>
         <div class="collapse show" id="laravelExample">
           <ul class="nav">
             <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
-                <span class="sidebar-mini"> UP </span>
-                <span class="sidebar-normal">{{ __('User profile') }} </span>
+              <a class="nav-link" href="{{ route('user.show', auth()->user()->id) }}">
+                <span class="sidebar-mini"> PU </span>
+                <span class="sidebar-normal"> Perfil de Usuario </span>
               </a>
             </li>
+            @can('user_index')
             <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="{{ route('user.index')}}">
                 <span class="sidebar-mini"> UM </span>
-                <span class="sidebar-normal"> {{ __('User Management') }} </span>
+                <span class="sidebar-normal"> Usuarios </span>
               </a>
             </li>
+            @endcan
           </ul>
         </div>
       </li>
@@ -50,7 +52,7 @@
             <p>{{ __('Lista de usuarios') }}</p>
         </a>
       </li>
-      @endcan      
+      @endcan
       @can('permission_index')
       <li class="nav-item{{ $activePage == 'permisos' ? ' active' : '' }}">
         <a class="nav-link" href="{{ route('permission.index') }}">
